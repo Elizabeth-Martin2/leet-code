@@ -22,15 +22,11 @@ This project demonstrates the **Strategy Pattern** and **Decorator Pattern** in 
 - Cars have **different handling behaviors** (`Strategy Pattern`).  
 - Cars can be **customized dynamically** with additional features (`Decorator Pattern`).  
 
----
-
 ## Key Features  
-- ✅ **Strategy Pattern**: Allows cars to have different turn-handling behaviors.  
-- ✅ **Decorator Pattern**: Enables adding optional features (e.g., undercoat, seat covers) dynamically.  
-- ✅ **Unit Testing with JUnit**: Ensures correctness of behaviors and cost calculations.  
-- ✅ **Object-Oriented Design**: Follows best practices for maintainable code.  
-
----
+- **Strategy Pattern**: Allows cars to have different turn-handling behaviors.  
+- **Decorator Pattern**: Enables adding optional features (e.g., undercoat, seat covers) dynamically.  
+- **Unit Testing with JUnit**: Ensures correctness of behaviors and cost calculations.  
+- **Object-Oriented Design**: Follows best practices for maintainable code.  
 
 ## Design Patterns Used  
 
@@ -63,6 +59,8 @@ This project demonstrates the **Strategy Pattern** and **Decorator Pattern** in 
     ```
 
 ## Example Output
+See below output when running Main.java:
+
 ``` pgsql
 Name: Sedan 1
 Cost: 10000
