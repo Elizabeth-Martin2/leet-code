@@ -1,5 +1,6 @@
-# Attempt 2:
 class Solution:
+    # Function to sort an array with insertion algorithm
+    # Analysis: O(n^2)
     def insertionSort(self, arr):
         n = len(arr)
         
@@ -13,18 +14,21 @@ class Solution:
             
             arr[j + 1] = key
 
-# Analysis: O(n^2)
-
-# Attempt 1: 
-# Optimized, but technically not insertion sort
-# this implementation swaps instead of shifts
-# class Solution:
-#     def insertionSort(self, arr):
-#         n = len(arr)
+    # Function to sort an array with recursive insertion algorithm
+    # Analysis: O(n^2)
+    def recInsertionSort(self, arr, n = None):
+        if n == None:
+            n = 1
+        # Base case -- sorted
+        if n == len(arr):
+            return
         
-#         for i in range(1, n): # O(n)
-#             for j in range(0, i): # O(n)
-#                 if arr[i] < arr[j]:
-#                     arr[i], arr[j] = arr[j], arr[i]
+        # Assume n - 1 elements are already sorted
+        j = n - 1
+        key = arr[n]
+        while j >= 0 and arr[j] > key: # O(n)
+            arr[j + 1] = arr[j]
+            j -= 1
 
-# # Analysis: O(n^2)
+        arr[j + 1] = key
+        self.recInsertionSort(arr, n + 1) # O(n)
