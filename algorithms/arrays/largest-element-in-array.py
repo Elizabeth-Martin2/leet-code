@@ -1,4 +1,4 @@
-class solution:
+class Solution:
     """Returns largest integer from an array"""
 
     # Analysis: O(n)
@@ -9,5 +9,5 @@ if __name__ == "__main__":
     arr = [1, 8, 7, 56, 90]
     print(f"Array: {arr}")
 
-    largest = solution().largest(arr)
-    print(f"Largest number: {largest}")
+    largest_number = Solution().largest(arr)
+    print(f"Largest number: {largest_number}")
