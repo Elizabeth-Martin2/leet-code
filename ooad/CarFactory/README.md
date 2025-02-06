@@ -58,6 +58,11 @@ This project demonstrates the **Strategy Pattern** and **Decorator Pattern** in 
     // Output: Convertible 1 (add undercoat) (add seat cover)
     ```
 
+## UML Diagram
+Below is the UML diagram for this project:
+
+![UML Diagram](UML_diagram.jpg)
+
 ## Example Output
 See below output when running Main.java:
 
