@@ -1,5 +1,9 @@
 class Solution:
+    """Finds the single number in an array"""
+
+    # Analysis: time = O(n), space = O(1)
     def single_number(self, nums: list[int]) -> int:
+        """Returns the single number in a given array"""
         result = 0
         for num in nums:
             result ^= num
