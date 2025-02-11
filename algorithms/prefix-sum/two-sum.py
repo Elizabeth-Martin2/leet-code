@@ -19,25 +19,24 @@ class Solution:
             
             prefix_sum[num] = i
 
-        return -1
+        return [-1, -1] # Should never be reached, but included for completion
 
 if __name__ == "__main__":
-    nums1 = [2,7,11,15]
+    solution = Solution()
+
+    nums1 = [2, 7, 11, 15]
     target1 = 9
-    sol1 = Solution().twoSum(nums1, target1)
-    print(f"Nums1: {nums1}, target1: {target1}")
-    print(f"Indices: {sol1[0]} = {nums1[sol1[0]]} + {sol1[1]} = {nums1[sol1[1]]} = {target1}")
-    print("-------------------")
+    result1 = solution.twoSum(nums1, target1)
+    assert nums1[result1[0]] + nums1[result1[1]] == target1, "Test Case 1 Failed"
 
-    nums2 = [3,2,4]
+    nums2 = [3, 2, 4]
     target2 = 6
-    sol2 = Solution().twoSum(nums2, target2)
-    print(f"Nums2: {nums2}, target2: {target2}")
-    print(f"Indices: {sol2[0]} = {nums2[sol2[0]]} + {sol2[1]} = {nums2[sol2[1]]} = {target2}")
-    print("-------------------")
+    result2 = solution.twoSum(nums2, target2)
+    assert nums2[result2[0]] + nums2[result2[1]] == target2, "Test Case 2 Failed"
 
-    nums3 = [3,3]
+    nums3 = [3, 3]
     target3 = 6
-    sol3 = Solution().twoSum(nums3, target3)
-    print(f"Nums3: {nums3}, target3: {target3}")
-    print(f"Indices: {sol3[0]} = {nums3[sol3[0]]} + {sol3[1]} = {nums3[sol3[1]]} = {target3}")
+    result3 = solution.twoSum(nums3, target3)
+    assert nums3[result3[0]] + nums3[result3[1]] == target3, "Test Case 3 Failed"
+
+    print("All test cases passed!")
