@@ -53,6 +53,6 @@ if __name__ == "__main__":
 
     matrix3 = [[1,2,3,4,5],[1,2,3,0,5],[1,0,3,4,5]]
     solution.setZeroes(matrix3)
-    assert matrix3 == [[1,0,3,0,5],[0,0,0,0,0],[0,0,0,0,0]]
+    assert matrix3 == [[1,0,3,0,5],[0,0,0,0,0],[0,0,0,0,0]], "Test case 3 failed"
 
     print("All test cases passed!")
