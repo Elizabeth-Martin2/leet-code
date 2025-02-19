@@ -28,7 +28,7 @@ class Solution:
     def majority_element_third(self, nums: list[int]) -> list[int]:
         """
         Returns the majority integer in an array using the Boyer-Moore Voting Algorithm where
-        the majority integer occurs repeatedly for more than half of the integers of the input.
+        the majority integer occurs repeatedly for more than a third of the integers of the input.
         """
 
         candidate1, candidate2, = None, None
