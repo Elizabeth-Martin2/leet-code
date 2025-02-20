@@ -2,7 +2,7 @@ class Solution:
     """Returns lists of distinct integers that sum to zero"""
 
     # Analysis: time = O(n^2), space = O()
-    def threeSum(self, nums: list[int]) -> list[list[int]]:
+    def three_sum(self, nums: list[int]) -> list[list[int]]:
         res = []
         nums.sort()
 
@@ -48,6 +48,6 @@ if __name__ == "__main__":
     test_case_ress = [res1, res2, res3]
 
     for i, test in enumerate(test_cases):
-        assert solution.threeSum(test) == test_case_ress[i], f"Test case {i} failed"
+        assert solution.three_sum(test) == test_case_ress[i], f"Test case {i + 1} failed"
 
     print("All test cases passed!")
