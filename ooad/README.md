@@ -79,7 +79,7 @@ This project demonstrates three key design patterns in Java:
 ## UML Diagram
 Below is the UML diagram for this project:
 
-![UML Diagram](UML_diagram.jpg)
+![UML Diagram](abstract_factory_uml.jpg)
 
 ## Example Output
 See below output when running Main.java:
