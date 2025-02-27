@@ -24,6 +24,6 @@ This repository is meant for progressive learning, covering:
     - Each solution includes time & space complexity analysis.
     - I revisit solutions to improve efficiency over time.
 
-3. Object-Oriented Design (OOAD):
+3. Object-Oriented Analysis & Design (OOAD):
     - Design pattern implementations (e.g., Singleton, Factory).
     - Case studies of real-world systems using UML diagrams.
