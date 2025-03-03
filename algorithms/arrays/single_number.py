@@ -1,9 +1,9 @@
 class Solution:
-    """Finds the single number in an array"""
+    """Finds the single non-duplicate number in an array using XOR."""
 
     # Analysis: time = O(n), space = O(1)
     def single_number(self, nums: list[int]) -> int:
-        """Returns the single number in a given array"""
+        """Returns the single number in a given array where every other number appears twice."""
         result = 0
         for num in nums:
             result ^= num
@@ -11,11 +11,16 @@ class Solution:
 
 
 if __name__ == "__main__":
-    nums1 = [4,1,2,1,2]
-    print(f"Nums1: {nums1}, single number: {Solution().single_number(nums1)}")
+    solution = Solution()
 
-    nums2 = [2,2,1]
-    print(f"Nums2: {nums2}, single number: {Solution().single_number(nums2)}")
+    test_cases = [
+        ([4, 1, 2, 1, 2], 4),
+        ([2, 2, 1], 1),
+        ([1], 1),
+        ([0, 1, 0], 1),
+    ]
 
-    nums3 = [1]
-    print(f"Nums3: {nums3}, single number: {Solution().single_number(nums3)}")
+    for i, (nums, expected) in enumerate(test_cases, 1):
+        assert solution.single_number(nums) == expected, f"Test case {i} failed"
+
+    print("All test cases passed!")

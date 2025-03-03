@@ -1,11 +1,24 @@
 class Solution:
+    """Reverses the order of words in a string."""
+
+    # Analysis: time = O(n), space = O(n)
     def reverseWords(self, s: str) -> str:
-        no_spaces = s.split()
-        # return ' '.join(no_spaces[::-1]) # one-liner solution
+        """Returns a string with words reversed while maintaining spaces."""
+        return " ".join(s.split()[::-1])
 
-        rev_s = []
-        for i in range(1, len(no_spaces) + 1):
-            rev_s.append(no_spaces[-i])
 
-        # print(rev_s)
-        return " ".join(rev_s)
+if __name__ == "__main__":
+    solution = Solution()
+
+    test_cases = [
+        ("the sky is blue", "blue is sky the"),
+        ("  hello world  ", "world hello"),
+        ("a good   example", "example good a"),
+        ("singleword", "singleword"),
+        ("", ""),
+    ]
+
+    for i, (s, expected) in enumerate(test_cases, 1):
+        assert solution.reverseWords(s) == expected, f"Test case {i} failed"
+
+    print("All test cases passed!")
