@@ -7,7 +7,7 @@ class Solution:
         n = len(nums)
         count_breaks = 0
 
-        for i in range(n): # O(n)
+        for i in range(n):  # O(n)
             # Wrap around array to check for breaks
             if nums[i] > nums[(i + 1) % n]:
                 count_breaks += 1
@@ -22,9 +22,9 @@ class Solution:
         j = rotating_ind = -1
         n = len(nums)
         i = 0
-        
+
         # Check for sorted & find rotating index
-        while i in range(n) and rotating_ind == -1: # O(n)
+        while i in range(n) and rotating_ind == -1:  # O(n)
             if nums[i] >= j:
                 j = nums[i]
             else:
@@ -32,16 +32,14 @@ class Solution:
             i += 1
 
         if rotating_ind == -1:
-            # Already sorted
-            return True
-        
+            return True  # Already sorted
+
         # Avoid creating new arrays to save space
         counter = 0
         i = rotating_ind
         j = -1
 
         while counter < n:
-            # Use i to cycle through nums & reset at the end
             if i >= n:
                 i = 0
             if nums[i] >= j:
@@ -54,15 +52,16 @@ class Solution:
 
 
 if __name__ == "__main__":
-    nums1 = [3,4,5,1,2]
+    solution = Solution()
+    test_cases = [
+        ([3, 4, 5, 1, 2], True),
+        ([1, 1, 1], True),
+        ([6, 10, 6], True),
+        ([2, 1, 3, 4], False),
+    ]
 
-    print(f"nums1: {nums1}; Sorted & rotated: {Solution().check_optimized(nums1)}")
+    for i, (nums, expected) in enumerate(test_cases, 1):
+        output = solution.check_optimized(nums)
+        assert output == expected, f"Test case {i} failed, expected {expected}, got {output}"
 
-    nums2 = [1,1,1]
-    print(f"nums2: {nums2}; Sorted & rotated: {Solution().check_optimized(nums2)}")
-
-    nums3 = [6,10,6]
-    print(f"nums3: {nums3}; Sorted & rotated: {Solution().check_optimized(nums3)}")
-
-    nums4 = [2,1,3,4]
-    print(f"nums4: {nums4}; Sorted & rotated: {Solution().check_optimized(nums4)}")
+    print("All test cases passed!")

@@ -13,9 +13,17 @@ class Solution:
                 current_count = 0
         return max_count
 
-if __name__ == "__main__":
-    nums1 = [1,1,0,1,1,1]
-    print(f"Nums1: {nums1}, max consecutive ones: {Solution().find_max_consecutive_ones(nums1)}")
 
-    nums2 = [1,0,1,1,0,1]
-    print(f"Nums2: {nums2}, max consecutive ones: {Solution().find_max_consecutive_ones(nums2)}")
+if __name__ == "__main__":
+    solution = Solution()
+    test_cases = [
+        ([1, 1, 0, 1, 1, 1], 3),
+        ([1, 0, 1, 1, 0, 1], 2),
+        ([0, 0, 0, 0], 0),
+        ([1, 1, 1, 1, 1], 5),
+    ]
+
+    for nums, expected in test_cases:
+        assert solution.find_max_consecutive_ones(nums) == expected
+
+    print("All test cases passed!")

@@ -1,27 +1,29 @@
 class Solution:
-    """Finds the maximum subarray"""
+    """Finds the maximum subarray sum using Kadane's Algorithm."""
 
     # Analysis: time = O(n), space = O(1)
     def max_sub_array(self, nums: list[int]) -> int:
-        """Return the sum of the maximum subarray using Kadane's Algorithm"""
+        """Returns the sum of the maximum subarray."""
         current_sum = max_sum = nums[0]
 
         for num in nums[1:]:
             current_sum = max(current_sum + num, num)
             max_sum = max(current_sum, max_sum)
-        
+
         return max_sum
+
 
 if __name__ == "__main__":
     solution = Solution()
 
-    nums1 = [-2,1,-3,4,-1,2,1,-5,4]
-    assert solution.max_sub_array(nums1) == 6, "Test case 1 failed"
+    test_cases = [
+        ([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6),
+        ([1], 1),
+        ([5, 4, -1, 7, 8], 23),
+        ([-1, -2, -3, -4], -1),  # Edge case: all negative numbers
+    ]
 
-    nums2 = [1]
-    assert solution.max_sub_array(nums2) == 1, "Test case 2 failed"
-
-    nums3 = [5,4,-1,7,8]
-    assert solution.max_sub_array(nums3) == 23, "Test case 3 failed"
+    for i, (nums, expected) in enumerate(test_cases, 1):
+        assert solution.max_sub_array(nums) == expected, f"Test case {i} failed"
 
     print("All test cases passed!")
