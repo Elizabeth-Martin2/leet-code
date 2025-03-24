@@ -3,6 +3,9 @@ class Solution:
     Returns True if given target is present in a 2D matrix, else False.
     Uses binary search to find the target.
 
+    Given: (1) Each row is sorted in non-decreasing order.  (2) The first
+    integer of each row is greater than the last integer of the previous row.
+
     LC. 74 Search a 2D matrix
     """
 
