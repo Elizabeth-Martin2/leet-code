@@ -1,4 +1,4 @@
-
+from typing import Optional
 class Node:
     def __init__(self, data):
         self.data = data
@@ -77,6 +77,19 @@ class Solution:
             node = node.next
 
         return False
+
+
+    # Analysis: time = O(n), space = O(1)
+    def reverseList(self, head: Optional[Node]) -> Optional[Node]:
+        prev, current = None, head
+
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+
+        return prev
 
 
 if __name__ == "__main__":
