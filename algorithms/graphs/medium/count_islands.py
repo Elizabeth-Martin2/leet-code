@@ -7,6 +7,8 @@ class Solution:
     LC. 200 Number of Islands
     """
 
+    # Function Analysis: time = O(m * n), space = O(m * n)
+    # where m = number of columns, n = number of rows
     def floodFill(self, grid: list[list[str]], sr: int, sc: int) -> None:
         num_rows, num_cols = len(grid), len(grid[0])
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
@@ -16,7 +18,7 @@ class Solution:
 
         while to_visit:
             current_row, current_col = to_visit.popleft()
-            grid[current_row][current_col] = '0'
+            # grid[current_row][current_col] = '0'
 
             for delta_row, delta_col in directions:
                 next_row, next_col = current_row + delta_row, current_col + delta_col
@@ -26,6 +28,8 @@ class Solution:
                     grid[next_row][next_col] = '0'
 
 
+    # Overall Analysis: time = O(m * n), space = O(m * n)
+    # where m = number of columns, n = number of rows
     def numIslands(self, grid: list[list[str]]) -> int:
         islands = 0
         

@@ -8,7 +8,7 @@ class Solution:
     LC. 733 Flood Fill
     """
 
-    # Analysis: time = O(m * n), space = O(1)
+    # Analysis: time = O(m * n), space = O(m * n)
     # where m = number of rows, and n = number of columns
     def floodFill(self, image: list[list[int]], sr: int, sc: int, color: int) -> list[list[int]]:
         key = image[sr][sc]
@@ -18,6 +18,7 @@ class Solution:
         num_rows, num_cols = len(image), len(image[0])
         directions = [(-1, 0), (1,0), (0,-1), (0, 1)]
 
+        # Note: If deque is unavailable, use an index pointer to keep track
         to_visit = deque()
         to_visit.append([sr,sc])
 
@@ -34,6 +35,7 @@ class Solution:
                         to_visit.append([next_row, next_col])
 
         return image
+
 
 if __name__ == "__main__":
     solution = Solution()
