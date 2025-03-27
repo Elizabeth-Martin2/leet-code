@@ -92,6 +92,48 @@ class Solution:
         return prev
 
 
+    # Analysis: time = O(n), space = O(1)
+    # Uses Floyd's Cycle detection (Hare & Tortoise)
+    def hasCycle(self, head: Optional[Node]) -> bool:
+        """
+        Check if linked list has a cycle and return
+        boolean value accordingly.
+        """
+        slow = fast = head
+
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+
+            if slow == fast:
+                return True
+
+        return False
+
+    # Analysis: time = O(n), space = O(1)
+    # Uses Floyd's cycle detection again
+    def detectCycle(self, head: Optional[Node]) -> Optional[Node]:
+        """
+        If the linked list has a cycle, return the node where it begins.
+        """
+        slow = fast = head
+
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if slow == fast:
+                break
+        else:
+            return None
+
+        slow = head
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+
+        return slow
+
+
 if __name__ == "__main__":
 
     # Used for test cases
