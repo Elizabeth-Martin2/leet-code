@@ -1,4 +1,13 @@
 class Solution:
+    """
+    Given a binary array (nums) and an integer (k), return the
+    maximum number of consecutive 1's in the array if you can
+    flip at most k 0's.
+
+    LC. 1004 Max Consecutive Ones 3
+    """
+
+    # Analysis: time = O(n), space = O(1)
     def longestOnes(self, nums: list[int], k: int) -> int:
         start, max_len = 0, 0
         o_count = 0
