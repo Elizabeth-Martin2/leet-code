@@ -1,6 +1,13 @@
 from collections import defaultdict
 
 class Solution:
+    """
+    Given a string s of lowercase alphabets, count all possible
+    substrings (not necessarily distinct) that have exactly k
+    distinct characters.
+    """
+
+    # Overall Analysis: time = O(n), space = O(n)
     def countSubstr(self, s, k):
         return self.atMostKDistinct(s, k) - self.atMostKDistinct(s, k - 1)
 
