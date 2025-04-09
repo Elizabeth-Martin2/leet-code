@@ -1,3 +1,4 @@
+from collections import deque
 class Solution:
     """
     Use a stack to validate if parentheses pairs are correct.
@@ -24,6 +25,40 @@ class Solution:
                 stack.append(paren)
         
         return len(stack) == 0
+
+    # Analysis: time = O(n), space = O(n)
+    # where n = len(s)
+    def isBalanced(s):
+        """
+        This is another implementation from revisiting the question.
+        It solves the same problem as above, but was required to return
+        "YES" or "NO" as the result.
+        """
+
+        my_stack = deque()
+        opens = {"{": 0, "(": 1, "[": 2}
+        closes = {"}": 0, ")": 1, "]": 2}
+
+        for i in range(len(s)):
+            p = s[i]
+
+            if p in opens:
+                my_stack.append(p)
+            elif p in closes:
+                if not my_stack:
+                    return "NO"
+
+                last_p = my_stack.pop()
+                if closes[p] != opens[last_p]:
+                    return "NO"
+            else:
+                return "NO"
+
+        if len(my_stack) > 0:
+            return "NO"
+
+        return "YES"
+
 
 if __name__ == "__main__":
     soluion = Solution()
