@@ -6,35 +6,36 @@ class ListNode:
         self.next = next
         self.prev = prev
 
-
 class Solution:
     """
-    Given the head of a doubly linked list and an integer target.
-    Delete all nodes in the linked list with the value target and
-    return the head of the modified linked list.
+    Given the head of a doubly linked list with its values sorted 
+    in non-decreasing order. Remove all duplicate occurrences of 
+    any value in the list so that only distinct values are present 
+    in the list. 
 
-    E.g., head = 1 <-> 2 <-> 3 <-> 1 <-> 4, target = 1, expected output: 2 <-> 3 <-> 4
+    Return the head of the modified linked list.
     """
 
     # Analysis: time = O(n), space = O(1)
     # where n = number of nodes in linked list
-    def deleteAllOccurrences(self, head: Optional[ListNode], target: int) -> Optional[ListNode]:
-        dummy = ListNode(0, head, None)
-        node, prev = dummy.next, dummy
+    def removeDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev, node = head, head.next
 
         while node:
-            if node.val == target:
+            if node.val == prev.val:
+                # remove it
                 prev.next = node.next
                 if node.next:
                     node.next.prev = prev
 
                 # in this case, prev doesn't move
-                node = node.next
             else:
                 prev = node
-                node = node.next
 
-        return dummy.next
+            node = node.next
+
+        return head
+
 
 
 # Helper functions for testing
@@ -62,17 +63,15 @@ if __name__ == "__main__":
     s = Solution()
 
     test_cases = [
-        ([1, 2, 3, 1, 4], 1, [2, 3, 4]),
-        ([2, 3, 1, 4, 2], 2, [3, 1, 4]),
-        ([9, 9, 9], 9, [])
+        ([0, 1, 2, 2, 3, 3, 4], [0, 1, 2, 3, 4]),
+        ([1, 1, 1, 2, 2], [1, 2]),
+        ([9, 9, 9], [9])
     ]
 
-    for i, (arr, target, expected) in enumerate(test_cases, 1):
+    for i, (arr, expected) in enumerate(test_cases, 1):
         dll = list_to_doubly_linkedlist(arr)
-        output = s.deleteAllOccurrences(dll, target)
+        output = s.removeDuplicates(dll)
         result = doubly_linkedlist_to_list(output)
         assert result == expected, f"Test case {i} failed: expected {expected}, got {result}"
 
     print("All test cases passed!")
-
-
