@@ -32,6 +32,32 @@ class Solution:
         INT_MIN, INT_MAX = -2**31, 2**31 - 1
         return max(INT_MIN, min(INT_MAX, num))
 
+    # Recursive implementation
+    # Analysis: time = O(n), space = O(n) [due to the recursive call stack]
+    def myAtoiRec(self, s: str) -> int:
+        s = s.lstrip()
+        if not s:
+            return 0
+
+        sign = 1
+        i = 0
+
+        if s[0] in '+-':
+            if s[0] == '-':
+                sign = -1
+            i += 1
+
+        def parse_digits(s, i, value):
+            if i == len(s) or not s[i].isdigit():
+                return value
+            return parse_digits(s, i + 1, value * 10 + int(s[i]))
+
+        num = parse_digits(s, i, 0) * sign
+
+        INT_MIN, INT_MAX = -2**31, 2**31 - 1
+        return max(INT_MIN, min(INT_MAX, num))
+
+
 
 if __name__ == "__main__":
     solution = Solution()
@@ -45,6 +71,9 @@ if __name__ == "__main__":
 
     for i, (s, expected) in enumerate(test_cases, 1):
         output = solution.myAtoi(s)
-        assert output == expected, f"Test case {i} failed, expected {expected}, got {output}"
+        assert output == expected, f"Iterative test case {i} failed, expected {expected}, got {output}"
+
+        output = solution.myAtoiRec(s)
+        assert output == expected, f"Recursive test case {i} failed, expected {expected}, got {output}"
 
     print("All test cases passed!")
