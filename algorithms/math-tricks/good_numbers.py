@@ -11,6 +11,27 @@ class Solution:
     LC. 1922 Count Good Numbers
     """
 
+    # Optimized attempt
+    # Analysis: time: O(log n), space = O(log n)
+    def countGoodNumbersOpt(self, n: int) -> int:
+        MOD = 10**9 + 7
+
+        def mod_pow(x, power):
+            if power == 0:
+                return 1
+            half = mod_pow(x, power // 2)
+            result = (half * half) % MOD
+            if power % 2 == 1:
+                result = (result * x) % MOD
+            return result
+
+        even_count = (n + 1) // 2
+        odd_count = n // 2
+
+        return (mod_pow(5, even_count) * mod_pow(4, odd_count)) % MOD
+
+
+    # First attempt -- not efficient enough
     # Analysis: time = O(n), space = O(n) [due to recursive call stack]
     def countGoodNumbers(self, n: int) -> int:
         MOD = 10**9 + 7
