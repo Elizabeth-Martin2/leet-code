@@ -48,6 +48,19 @@ class Solution:
 
         return helper(ind=0, current=0)
 
+    # Existence analysis: time = O(n * k), space = O(n * k)
+    def existsSubsequenceWithTargetSum(self, nums: list[int], k: int) -> bool:
+        nums_len = len(nums)
+
+        @lru_cache(maxsize=None)
+        def helper(ind: int = 0, current: int = 0):
+            if ind == nums_len:
+                return current == k
+
+            return helper(ind + 1, current + nums[ind]) or helper(ind + 1, current)
+
+        return helper()
+
 
 if __name__ == "__main__":
     s = Solution()
@@ -65,6 +78,10 @@ if __name__ == "__main__":
         output = s.countSubsequencesWithTargetSum_naive(nums, k)
         assert output == expected, f"Naive Test case {i} failed, expected {expected}, got {output}"
 
+        output = s.existsSubsequenceWithTargetSum(nums, k)
+        if expected > 0: assert output == True, f"Naive Test case {i} failed, expected {expected}, got {output}"
+        else: assert output == False, f"Existence Test case {i} failed, expected {expected}, got {output}"
+
     print("All test cases passed!")
 
     print("Stress testing functions...")
@@ -79,12 +96,18 @@ if __name__ == "__main__":
     end = time.time()
     print(f"Naive result = {result_naive}, time = {end - start:.4f} sec")
 
-    # Time memoized version, time = O()
+    # Time memoized version, time = O(n * k)
     start = time.time()
     result_memo = s.countSubsequencesWithTargetSum_memo(nums, target)
     end = time.time()
     print(f"Memoized result = {result_memo}, time = {end - start:.4f} sec")
 
+    start = time.time()
+    result_memo = s.existsSubsequenceWithTargetSum(nums, target)
+    end = time.time()
+    print(f"Existence result = {result_memo}, time = {end - start:.4f} sec")
+
     # Results when last run:
     # Naive result = 3268760, time = 4.4879 sec
     # Memoized result = 3268760, time = 0.0000 sec
+    # Existence result = True, time = 0.0000 sec
